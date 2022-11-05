@@ -77,7 +77,7 @@ class App extends Component {
     return (
       <div className="app-wrapper">
         <h2>Bubble & Selection Sorting</h2>
-        <div className="inputs">
+        <form className="inputs" onSubmit={this.sortingHandler}>
           <div>
             <select
               name="sort-type"
@@ -94,15 +94,19 @@ class App extends Component {
             <input
               type="text"
               id="sort-input"
-              placeholder="Separate numbers with comma.."
+              placeholder="For ex. 11, 12, 10, 8 ..."
               onChange={this.inputHandler}
             />
           </div>
-          <button onClick={this.sortingHandler}>Sort</button>
-          <button onClick={this.reloadWindow}>Refresh</button>
-        </div>
+          <button id="btn-sort" type="submit" onClick={this.sortingHandler}>
+            Sort
+          </button>
+          <button id="btn-reload" onClick={this.reloadWindow}>
+            Refresh
+          </button>
+        </form>
         <div className="result-field">
-          <p id="result-text">{this.state.sortedText}</p>
+          <h4 id="result-text">{this.state.sortedText}</h4>
         </div>
         <footer>
           <p>&copy;: Vijay KC, BCH React & Node 2022</p>
