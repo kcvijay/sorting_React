@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Bubble and Selection Sorting App Created in React
+
+## This is an assignment for Fullstack Web Developer Program (React & Node) in Business College Helsinki, 2022.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
