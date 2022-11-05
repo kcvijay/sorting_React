@@ -1,9 +1,10 @@
 .app-wrapper {
   max-width: 500px;
-  min-height: 500px;
+  min-height: 450px;
   margin: 50px auto;
   text-align: center;
   background: #fff;
+  box-shadow: 0 0 0 5px #fff;
 }
 
 h2 {
@@ -12,36 +13,37 @@ h2 {
   color: #fff;
 }
 
-.inputs {
+.inputs div {
   padding: 1rem;
+  display: flex;
 }
 
 select,
 input,
 button {
-  margin: 1rem;
+  margin: 0.5rem;
+  border-radius: 3px;
 }
 
 select {
-  background-color: hsla(26, 100%, 50%, 0.5);
+  background-color: #e2e2e2;
   height: 40px;
-  width: 200px;
   font-family: inherit;
   padding: 0 0.5rem;
   border: none;
 }
 
 input {
-  border: 1px solid #999;
+  border: 0.5px solid #999;
   height: 40px;
-  width: 400px;
+  width: 100%;
   padding: 0 0.5rem;
   font-family: inherit;
 }
 
 button {
-  background-color: teal;
-  padding: 0.6rem 1.8rem;
+  background-color: #ff6f00;
+  padding: 0.7rem 2rem;
   border: none;
   color: #fff;
   text-transform: uppercase;
@@ -49,14 +51,20 @@ button {
 }
 
 #btn-reload {
-  background-color: #ff6f00;
+  background-color: teal;
 }
 
 .result-field {
-  height: 100px;
+  height: 150px;
+  padding: 1.5rem;
+}
+
+#result-text {
+  padding: 1rem;
 }
 
 footer {
   padding: 0.5rem 0;
-  background-color: rgb(219, 219, 219);
+  background-color: teal;
+  color: #fff;
 }

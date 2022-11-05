@@ -16,6 +16,11 @@ class App extends Component {
   };
 
   inputHandler = (e) => {
+    if (this.state.originalText.length === 1) {
+      this.setState({
+        sortedText: "",
+      });
+    }
     this.setState({
       originalText: e.target.value.split(",").map((el) => Number(el)),
     });
@@ -23,17 +28,19 @@ class App extends Component {
 
   sortingHandler = (e) => {
     e.preventDefault();
-    if (this.state.selectOption === "bubble") {
-      this.setState({
-        originalText: this.bubbleSort(this.state.originalText),
-      });
-    } else if (this.state.selectOption === "selection") {
-      this.setState({
-        originalText: this.selectionSort(this.state.originalText),
-      });
+    if (this.state.selectOption && this.state.originalText) {
+      if (this.state.selectOption === "bubble") {
+        this.setState({
+          originalText: this.bubbleSort(this.state.originalText),
+        });
+      } else if (this.state.selectOption === "selection") {
+        this.setState({
+          originalText: this.selectionSort(this.state.originalText),
+        });
+      }
     } else {
       this.setState({
-        originalText: "Something went wrong. Please check and sort again.",
+        sortedText: "Either sorting-type or, numbers are empty.",
       });
     }
 
@@ -89,8 +96,6 @@ class App extends Component {
               <option value="bubble">Bubble Sorting</option>
               <option value="selection">Selection Sorting</option>
             </select>
-          </div>
-          <div>
             <input
               type="text"
               id="sort-input"
