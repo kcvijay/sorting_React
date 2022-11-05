@@ -17,25 +17,29 @@ class App extends Component {
 
   inputHandler = (e) => {
     this.setState({
-      originalText: e.target.value.split(","),
+      originalText: e.target.value.split(",").map((el) => Number(el)),
     });
   };
 
-  sortingHandler = () => {
+  sortingHandler = (e) => {
+    e.preventDefault();
     if (this.state.selectOption === "bubble") {
       this.setState({
-        sortedText: this.bubbleSort(this.state.originalText),
+        originalText: this.bubbleSort(this.state.originalText),
       });
     } else if (this.state.selectOption === "selection") {
       this.setState({
-        sortedText: this.selectionSort(this.state.originalText),
+        originalText: this.selectionSort(this.state.originalText),
       });
     } else {
       this.setState({
-        sortedText: "Something went wrong. Please check and input again.",
+        originalText: "Something went wrong. Please check and sort again.",
       });
     }
-    console.log(this.state.sortedText);
+
+    this.setState({
+      sortedText: this.state.originalText.join(", "),
+    });
   };
 
   bubbleSort = (input) => {
@@ -65,6 +69,10 @@ class App extends Component {
     return input;
   };
 
+  reloadWindow = () => {
+    window.location.reload();
+  };
+
   render() {
     return (
       <div className="app-wrapper">
@@ -91,7 +99,7 @@ class App extends Component {
             />
           </div>
           <button onClick={this.sortingHandler}>Sort</button>
-          <button>Refresh</button>
+          <button onClick={this.reloadWindow}>Refresh</button>
         </div>
         <div className="result-field">
           <p id="result-text">{this.state.sortedText}</p>
