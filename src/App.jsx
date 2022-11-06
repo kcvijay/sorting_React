@@ -28,7 +28,11 @@ class App extends Component {
 
   sortingHandler = (e) => {
     e.preventDefault();
-    if (this.state.selectOption && this.state.originalText) {
+    if (this.state.selectOption === "" && this.state.originalText === "") {
+      this.setState({
+        sortedText: "Either sorting-type or, numbers are empty.",
+      });
+    } else {
       if (this.state.selectOption === "bubble") {
         this.setState({
           originalText: this.bubbleSort(this.state.originalText),
@@ -38,10 +42,6 @@ class App extends Component {
           originalText: this.selectionSort(this.state.originalText),
         });
       }
-    } else {
-      this.setState({
-        sortedText: "Either sorting-type or, numbers are empty.",
-      });
     }
 
     this.setState({
@@ -111,10 +111,17 @@ class App extends Component {
           </button>
         </form>
         <div className="result-field">
+          <h3>{this.state.selectOption}</h3>
           <h4 id="result-text">{this.state.sortedText}</h4>
         </div>
         <footer>
           <p>&copy;: Vijay KC, BCH React & Node 2022</p>
+          <a
+            href="https://github.com/kcvijay/sorting_React"
+            target="_blank noreferer"
+          >
+            View at GitHub
+          </a>
         </footer>
       </div>
     );
